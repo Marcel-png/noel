@@ -1,0 +1,90 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+
+
+@keyframes fall {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100vh); /* Utilisez 100vh pour couvrir toute la hauteur de la page */
+  }
+}
+
+.snowflake {
+  position: absolute;
+  top: -10px;
+  width: 55px;
+  height: 55px;
+  background: url('9f571747e8e07765cf31b98999d41e55-christmas-lettering-cute.webp') no-repeat center center;
+  background-size: contain;
+  animation: fall 10s linear infinite;
+  z-index: -1; /* Assurez-vous que les flocons de neige passent en dessous du formulaire */
+}
+
+.snowflake:nth-child(odd) {
+  animation-duration: 20s;
+}
+
+
+.blinking-lights {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.blinking-lights span {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin: 0 5px;
+  border-radius: 50%;
+  background-color: red;
+  animation: blink 1s infinite;
+}
+
+.blinking-lights span:nth-child(2) {
+  background-color: green;
+  animation-delay: 0.2s;
+}
+
+.blinking-lights span:nth-child(3) {
+  background-color: blue;
+  animation-delay: 0.4s;
+}
+
+.sparkle {
+  animation: sparkle 1s infinite;
+}
