@@ -1,9 +1,11 @@
 module.exports = {
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+  ],
   theme: {
     extend: {
       animation: {
         'fade-in': 'fadeIn 1s ease-in',
-        'bounce': 'bounce 2s infinite',
       },
       keyframes: {
         fadeIn: {
@@ -13,4 +15,5 @@ module.exports = {
       },
     },
   },
+  plugins: [],
 }
