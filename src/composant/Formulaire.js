@@ -50,7 +50,7 @@ const Formulaire = () => {
   };
 
   return (
-    <div className="relative bg-white shadow-2xl animate__animated animate__fadeIn mx-auto my-8 border border-blue-500 rounded-lg w-full max-w-lg p-4 md:p-8 lg:p-12" style={{ zIndex: 1 }}>
+    <div className="bg-opacity-80 relative bg-white shadow-2xl animate__animated animate__fadeIn mx-auto my-8 border border-blue-500 rounded-lg w-full max-w-lg p-4 md:p-8 lg:p-12" style={{ zIndex: 1 }}>
       <section className="text-center">
         <img src={gifImage} alt="Merry Christmas" className="mx-auto my-4 w-32 h-32 animate__animated animate__rubberBand" />
       </section>
@@ -81,7 +81,7 @@ const Formulaire = () => {
                 type="submit"
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold border border-red-500 rounded-lg border-2 p-2 my-4 animate__animated animate__pulse"
               >
-                Générer un lien
+                Partager la surprise à votre tour.
               </button>
             </div>
           </form>
@@ -131,7 +131,7 @@ const Formulaire = () => {
                 onClick={partagerSurWhatsApp}
                 className="bg-green-500 hover:bg-green-700 text-white font-bold border border-green-500 rounded-lg border-2 p-2 mt-4"
               >
-                Appuyer pour partager
+                Appuyer ici pour partager
               </button>
             </div>
           )}
