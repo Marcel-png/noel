@@ -34,57 +34,520 @@ code {
 
 
 
-@keyframes fall {
+/* Animation des flocons de neige améliorée */
+@keyframes snowfall {
   0% {
-    transform: translateY(-100%);
+    transform: translateY(-100vh) rotate(0deg);
   }
   100% {
-    transform: translateY(100vh); /* Utilisez 100vh pour couvrir toute la hauteur de la page */
+    transform: translateY(100vh) rotate(360deg);
   }
 }
 
 .snowflake {
+  position: fixed;
+  opacity: 0.8;
+  animation: snowfall linear infinite;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Effet de texte magique */
+.magical-text {
+  background: linear-gradient(45deg, #ff0000, #00ff00, #0000ff, #ff0000);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: rainbow 5s ease infinite;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+@keyframes rainbow {
+  0% { background-position: 0% 50% }
+  50% { background-position: 100% 50% }
+  100% { background-position: 0% 50% }
+}
+
+/* Style de carte de Noël */
+.christmas-card {
+  background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+  box-shadow: 0 0 20px rgba(255,0,0,0.2), 
+              0 0 40px rgba(0,255,0,0.2), 
+              0 0 60px rgba(0,0,255,0.2);
+  transform-style: preserve-3d;
+  transition: all 0.3s ease;
+}
+
+.christmas-card:hover {
+  transform: translateY(-5px) scale(1.01);
+  box-shadow: 0 0 25px rgba(255,0,0,0.3), 
+              0 0 45px rgba(0,255,0,0.3), 
+              0 0 65px rgba(0,0,255,0.3);
+}
+
+/* Animation pour les boutons */
+button {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255,255,255,0.5);
+}
+
+button::after {
+  content: '';
   position: absolute;
-  top: -10px;
-  width: 55px;
-  height: 55px;
-  background: url('9f571747e8e07765cf31b98999d41e55-christmas-lettering-cute.webp') no-repeat center center;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to bottom right,
+    rgba(255,255,255,0.8) 0%,
+    rgba(255,255,255,0) 100%
+  );
+  transform: rotate(45deg);
+  animation: shine 3s infinite;
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%) rotate(45deg); }
+  100% { transform: translateX(100%) rotate(45deg); }
+}
+/* Animations de Noël sophistiquées */
+.christmas-scene {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Animation du Père Noël traversant l'écran */
+@keyframes santaFlight {
+  0% {
+    transform: translate(-100vw, 20vh) rotate(5deg);
+  }
+  50% {
+    transform: translate(50vw, 15vh) rotate(-5deg);
+  }
+  100% {
+    transform: translate(200vw, 25vh) rotate(5deg);
+  }
+}
+
+.santa {
+  position: fixed;
+  width: 150px;
+  height: 100px;
+  background: url('gip.webp') no-repeat center/contain;
+  animation: santaFlight 20s linear infinite;
+  z-index: 1000;
+}
+
+/* Étoiles scintillantes */
+.star {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: white;
+  border-radius: 50%;
+}
+
+@keyframes starTwinkle {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(0.5);
+  }
+}
+
+/* Flocons de neige améliorés */
+.snowflake {
+  position: fixed;
+  color: white;
+  text-shadow: 
+    0 0 5px rgba(255,255,255,0.8),
+    0 0 10px rgba(255,255,255,0.5);
+  opacity: 0;
+  font-size: 1.5rem;
+}
+
+.snowflake::after {
+  content: '❄';
+}
+
+@keyframes snowfall {
+  0% {
+    transform: translateY(-100vh) rotate(0deg) scale(0.8);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg) scale(0.8);
+    opacity: 0;
+  }
+}
+
+/* Guirlandes lumineuses */
+.christmas-lights {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0px,
+    transparent 40px,
+    #ff0000 40px,
+    #ff0000 50px,
+    #00ff00 50px,
+    #00ff00 60px,
+    #0000ff 60px,
+    #0000ff 70px
+  );
+  animation: lightsOn 1s steps(1) infinite;
+  box-shadow: 0 0 20px rgba(255,255,255,0.5);
+}
+
+@keyframes lightsOn {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+/* Cadeaux qui sautillent */
+.gift {
+  position: fixed;
+  bottom: 20px;
+  width: 50px;
+  height: 50px;
+  background: url('gip.webp') no-repeat center/contain;
+  animation: giftBounce 2s ease-in-out infinite;
+}
+
+@keyframes giftBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* Effet de neige qui tombe */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 50% 50%, white 0%, transparent 0.5%),
+    radial-gradient(circle at 30% 40%, white 0%, transparent 0.5%),
+    radial-gradient(circle at 70% 60%, white 0%, transparent 0.5%);
+  animation: snowLayer 10s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes snowLayer {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100vh);
+  }
+}
+
+/* Fond magique de Noël */
+body {
+  background: 
+    linear-gradient(
+      135deg,
+      #1a2a6c 0%,
+      #b21f1f 50%,
+      #1a2a6c 100%
+    );
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+}
+
+/* Effet de brouillard hivernal */
+.fog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(
+      to bottom,
+      transparent,
+      rgba(255,255,255,0.1) 20%,
+      transparent 100%
+    );
+  animation: fogMove 20s linear infinite;
+}
+
+@keyframes fogMove {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+/* Styles de base */
+.christmas-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 0 30px rgba(255, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+
+.magic-active {
+  animation: cardGlow 2s infinite;
+}
+
+/* Animations */
+@keyframes cardGlow {
+  0%, 100% {
+    box-shadow: 
+      0 0 30px rgba(255, 0, 0, 0.2),
+      0 0 50px rgba(0, 255, 0, 0.2),
+      0 0 70px rgba(0, 0, 255, 0.2);
+  }
+  50% {
+    box-shadow: 
+      0 0 50px rgba(255, 0, 0, 0.4),
+      0 0 70px rgba(0, 255, 0, 0.4),
+      0 0 90px rgba(0, 0, 255, 0.4);
+  }
+}
+
+.christmas-gif {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+  display: block;
+}
+
+.christmas-title {
+  color: #d4001c;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  margin: 1.5rem 0;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.name-input {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid #d4001c;
+  border-radius: 10px;
+  margin: 1rem 0;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.name-input:focus {
+  box-shadow: 0 0 15px rgba(212, 0, 28, 0.3);
+  transform: scale(1.02);
+}
+
+.submit-button, .share-button {
+  background: linear-gradient(45deg, #d4001c, #ff4d4d);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 1rem 0;
+  width: 100%;
+}
+
+.submit-button:hover, .share-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(212, 0, 28, 0.4);
+}
+
+/* Animations des éléments de Noël */
+.santa-sleigh {
+  position: fixed;
+  width: 100px;
+  height: 60px;
+  background-image: url('gip.webp');
   background-size: contain;
-  animation: fall 10s linear infinite;
-  z-index: -1; /* Assurez-vous que les flocons de neige passent en dessous du formulaire */
+  background-repeat: no-repeat;
+  animation: flyingSanta 20s linear infinite;
+  z-index: 1000;
 }
 
-.snowflake:nth-child(odd) {
-  animation-duration: 20s;
+@keyframes flyingSanta {
+  0% {
+    transform: translate(-100vw, 20vh) rotate(5deg);
+  }
+  100% {
+    transform: translate(200vw, 20vh) rotate(5deg);
+  }
+}
+
+.christmas-lights {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: repeating-linear-gradient(
+    90deg,
+    #ff0000 0px,
+    #ff0000 10px,
+    #00ff00 10px,
+    #00ff00 20px,
+    #0000ff 20px,
+    #0000ff 30px
+  );
+  animation: lightsFlicker 1s steps(3) infinite;
+}
+
+@keyframes lightsFlicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
 }
 
 
-.blinking-lights {
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .christmas-card {
+    margin: 1rem;
+    padding: 1rem;
+  }
+
+  .christmas-title {
+    font-size: 1.5rem;
+  }
+}
+.start-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #1a2a6c 0%, #b21f1f 50%, #fdbb2d 100%);
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  align-items: center;
+  z-index: 9999;
+  cursor: pointer;
 }
 
-.blinking-lights span {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  margin: 0 5px;
-  border-radius: 50%;
-  background-color: red;
-  animation: blink 1s infinite;
+.start-content {
+  text-align: center;
+  color: white;
+  padding: 2rem;
 }
 
-.blinking-lights span:nth-child(2) {
-  background-color: green;
-  animation-delay: 0.2s;
+.start-content h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 
-.blinking-lights span:nth-child(3) {
-  background-color: blue;
-  animation-delay: 0.4s;
+.start-button {
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  background: linear-gradient(45deg, #ff0000, #ff6b6b);
+  border: none;
+  border-radius: 50px;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
 }
 
-.sparkle {
-  animation: sparkle 1s infinite;
+.start-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+.snowflake {
+  position: fixed;
+  color: white;
+  text-shadow: 
+    0 0 5px rgba(255,255,255,0.9),
+    0 0 10px rgba(255,255,255,0.7),
+    0 0 15px rgba(255,255,255,0.5);
+  pointer-events: none;
+  z-index: 1000;
+  will-change: transform;
+  animation: snowfall linear infinite;
+}
+
+@keyframes snowfall {
+  0% {
+    transform: translateY(-100vh) translateX(-10px) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) translateX(10px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Variations supplémentaires */
+.snowflake:nth-child(2n) {
+  animation-name: snowfall-alt;
+}
+
+@keyframes snowfall-alt {
+  0% {
+    transform: translateY(-100vh) translateX(10px) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) translateX(-10px) rotate(-360deg);
+    opacity: 0;
+  }
+}
+
+.snowflakes-container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 999;
+  overflow: hidden;
 }
